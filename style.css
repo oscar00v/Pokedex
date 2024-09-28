@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+body{
+    background-color: white;
+    /*  */
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    /*  */
+    display: grid;
+    place-content: center;
+    /* distancia entre la barra y el centro de la pantalla  */
+    min-height: 20vh;
+
+    
+    
+}
+
+form{
+  /* background-color: aqua; */
+  background-color: #202020;
+  width: 100vw; /* Hace que el formulario ocupe todo el ancho de la pantalla */
+  box-sizing: border-box; /* Incluye el padding dentro del ancho total */
+  padding: 2rem;
+  color: white;
+  border-radius: .1rem;
+}
+
+form label {
+  font-size: 3.2rem;
+  font-weight: 700;
+  text-align: center;
+  padding: 0.8rem;
+}
+form div{
+  /* background-color: aqua; */
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 2.4rem;
+  padding: 0.8rem;
+  font-size: 1rem;
+  border-radius: .5rem;
+  width: 100%;
+  
+}
+form input{
+  height: 3rem;
+  width: 45rem;
+}
+
+button {
+  background-color: #ff6700;
+  border: none;
+  padding: 0.8rem 1.2rem;
+  margin-left: 0.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  color: white;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+button:hover {
+  background-color: #ff8533;
+}
+
+
+.Pokemons {
+background-color: aqua;
+}
+
+/* 
+form input{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0;
+
+  padding: 0.8rem;
+  font-size: 1rem;
+  border-radius: .5rem;
+  width: 50%;
+  max-width: 600px;
+}
+
+button {
+  background-color: #ff6700;
+  border: none;
+  padding: 0.8rem 1.2rem;
+  margin-left: 0.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  color: white;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+button:hover {
+  background-color: #ff8533;
+} */
