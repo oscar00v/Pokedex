@@ -1,38 +1,40 @@
 console.log("api");
 
-const URL_BASE = 'https://storage.googleapis.com/campus-cvs/00000000000-images-lectures/pokemons.json'
+const URL_BASE = 'https://storage.googleapis.com/campus-cvs/00000000000-images-lectures/pokemons.json'//todo esta por algun motivo no jala
+
 // const URL_CODE = 'https://cors-anywhere.herokuapp.com/';  // Proxy CORS gratuito
-const detailPageURL ='/us/pokedex/'
+const detailPageURL ='/us/pokedex/'//!la liga que se va a utilizar para las paginas 
+
+const form = document.querySelector('form');
+const inputText = document.querySelector('input[type="text"]');
 
 async function getPokemon(url) {
-     const response = await fetch(URL_CODE + url, {
-        mode: 'cors'
-    });
+    const response = await fetch(url);
     console.log(response);
-
+ 
     if(!response.ok){
         renderError(response.status);
         return undefined;
     }
-
+ 
     const data = await response.json()
     return data[0];
-}
-
-getPokemon(URL_BASE);
-
-const form = document.querySelector('form');
-const inputText = document.querySelector('input[type="text"]');
-const url = `${detailPageURL}`
+ }
 
 async function submitHandler(e) {
     e.preventDefault();
     const inputValue = inputText.value;
     const pokemonName = inputValue.toLowerCase();
-    console.log(`${detailPageURL}${pokemonName}`);
+    const url = `${detailPageURL}${pokemonName}`
+    console.log(url);
+    const getPokemonVar = await getPokemon(url);
+    console.log(getPokemonVar)
 }
 
 
+
+
+// getPokemon(URL_BASE);
 
 form.addEventListener('submit',(e)=>
     submitHandler(e));
