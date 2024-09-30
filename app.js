@@ -21,20 +21,39 @@ async function getPokemon(url) {
     return data[0];
  }
 
-async function submitHandler(e) {
-    e.preventDefault();
-    const inputValue = inputText.value;
-    const pokemonName = inputValue.toLowerCase();
-    const url = `${detailPageURL}${pokemonName}`
-    console.log(url);
-    const getPokemonVar = await getPokemon(url);
-    console.log(getPokemonVar)
-}
+//  function renderPokemon(data){
+//     main.innerHTML = (`
+//         <h1>
+//         <span class = "Name">${data.name.common}</span> 
+//         //! creo que si es asi
+//         <span class = "Numero">${data.number.common}</span>
+//         </h1>
+//         <img src=${data.ThumbnailImage.png} alt={data.flag.alt} />
+//         `);
+
+//  }
+
+// async function submitHandler(e) {
+//     e.preventDefault();
+//     const inputValue = inputText.value;
+//     const pokemonName = inputValue.toLowerCase();
+//     const url = `${URL_BASE}${pokemonName}`
+//     console.log(url);
+//     const getPokemonVar = await getPokemon(url);
+//     console.log(getPokemonVar);
+
+//     if(!getPokemonVar) return;
+
+//     renderPokemon(getPokemonVar);
+
+
+
+// }
 
 
 
 
-// getPokemon(URL_BASE);
+ getPokemon(URL_BASE);
 
 form.addEventListener('submit',(e)=>
     submitHandler(e));
