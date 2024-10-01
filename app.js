@@ -51,20 +51,34 @@ async function getPokemon(URL) {
     let className = "";//switch case grass = verde 
     const pokemonHTML = `
         <div class="pokemon-card">
-            <h1>${data.name.charAt(0).toUpperCase() + data.name.slice(1)} N.º ${data.id}</h1>
-            <img src="${data.sprites.other['official-artwork'].front_default}" alt="${data.name}">
-            <p><strong>Altura:</strong> ${data.height / 10} m</p>
-            <p><strong>Peso:</strong> ${data.weight / 10} kg</p>
-            <p><strong>Tipo:</strong> ${data.types.map(type => type.type.name).join(', ')}</p>
-            <p><strong>Habilidades:</strong> ${data.abilities.map(ability => ability.ability.name).join(', ')}</p>
-            <!-- Sprites de frente y detrás -->
-            <div class="sprites-section">
-            <h3>Sprites</h3>
-            <img src="${data.sprites.front_default}" alt="${data.name} Front"/>
-            <img src="${data.sprites.back_default}" alt="${data.name} Back" />
+            <div class = "pokemon-Name">
+                <h1>${data.name.charAt(0).toUpperCase() + data.name.slice(1)} N.º ${data.id}</h1></div>
+
+            <div class = "pokemon-image">
+            
+            </div>
+            <div class = "pokemon-details">
+                <div class = "pokemon-columns"> <img src="${data.sprites.other['official-artwork'].front_default}" alt="${data.name}"></div>
+                <div class = "pokemon-columns">
+
+                <p><strong>Altura:</strong> ${data.height / 10} m</p>
+                <p><strong>Peso:</strong> ${data.weight / 10} kg</p>
+                <p><strong>Tipo:</strong> ${data.types.map(type => type.type.name).join(', ')}</p>
+                <p><strong>Habilidades:</strong> ${data.abilities.map(ability => ability.ability.name).join(', ')}</p></div>
+            </div>
+        <div class="pokemon-sprites">
+            <h2>Sprites</h2>
+            <div class="sprites-container">
+                <div class="sprite-column">
+                    <img src="${data.sprites.front_default}" alt="Front sprite">
+                </div>
+                    <div class="sprite-column">
+                    <img src="${data.sprites.back_default}" alt="Back sprite">
+                </div>
+            </div>
         </div>
              
-        </div>
+    </div>
     `;
     // appeends para agregar las classes 
     pokemonGrid.innerHTML = pokemonHTML;

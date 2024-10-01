@@ -72,27 +72,61 @@ button:hover {
 
 .pokemon-card {
     border: 0.125 solid #ccc;
-    border-radius: 10px;
+    border-radius: 2.4rem;
     padding: 1.25rem;
-    width: 25rem;
+    width: 55rem;
     text-align: center;
     background-color: #f9f9f9;
     box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2);
+    
+}
+.pokemon-card h1{
+  /* background-color: aqua; */
+  font-size: 5rem;
 }
 
 .pokemon-card img {
-  max-width: 18rem; 
-  max-height: 15.625rem; 
-  width: 100%; /* Ocupa todo el ancho del contenedor */
+  flex: 1;
+  /* max-width: 18rem; 
+  max-height: 15.625rem;  */
+  width: 25rem; /* Ocupa todo el ancho del contenedor */
   height: auto; /* Mantiene la relación de aspecto */
   object-fit: cover; /* Asegura que la imagen cubra el contenedor */
-  display: block;
+  display: flex;
   margin: 0 auto;
     
 }
-.sprites-section{
-background-color: #ffffff;
+.pokemon-details {
+  /* background-color: aqua; */
+  display: flex;
+  justify-content: center;
+  padding: 30px;
+  font-size: 1.8rem;
+  
+
 }
+.pokemon-columns{
+  flex: 1;
+  /* background-color: #f7e17e; */
+}
+.pokemon-sprites h2{
+font-size: 2rem;
+}
+.sprites-container{
+  /* background-color: #ff6700; */
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.sprite-column img {
+  width: 25rem; /* Ajusta el tamaño de los sprites aquí */
+  height: auto;
+}
+
+/* .pokemon-sprites{
+background-color: #ff6700;
+} */
 /* .pokemon-grid {
   background-color: aqua;
   display: grid;
