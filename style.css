@@ -71,17 +71,17 @@ button:hover {
 }
 
 .pokemon-card {
-    border: 2px solid #ccc;
+    border: 0.125 solid #ccc;
     border-radius: 10px;
-    padding: 20px;
-    width: 400px;
+    padding: 1.25rem;
+    width: 25rem;
     text-align: center;
     background-color: #f9f9f9;
     box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2);
 }
 
 .pokemon-card img {
-  max-width: 28.125rem; 
+  max-width: 18rem; 
   max-height: 15.625rem; 
   width: 100%; /* Ocupa todo el ancho del contenedor */
   height: auto; /* Mantiene la relación de aspecto */
@@ -90,7 +90,9 @@ button:hover {
   margin: 0 auto;
     
 }
-
+.sprites-section{
+background-color: #ffffff;
+}
 /* .pokemon-grid {
   background-color: aqua;
   display: grid;

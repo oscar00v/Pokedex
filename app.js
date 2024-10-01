@@ -48,19 +48,25 @@ async function getPokemon(URL) {
 
  function renderPokemonCard(data){
     const pokemonGrid = document.getElementById('pokemon-grid');
-
+    let className = "";//switch case grass = verde 
     const pokemonHTML = `
         <div class="pokemon-card">
             <h1>${data.name.charAt(0).toUpperCase() + data.name.slice(1)} N.º ${data.id}</h1>
-            <img src="${data.sprites.front_default}" alt="${data.name}">
-            <p>Altura: ${data.height / 10} m</p>
-            <p>Peso: ${data.weight / 10} kg</p>
-            <p>Tipo: ${data.types.map(type => type.type.name).join(', ')}</p>
-            <p>Habilidades: ${data.abilities.map(ability => ability.ability.name).join(', ')}</p>
+            <img src="${data.sprites.other['official-artwork'].front_default}" alt="${data.name}">
+            <p><strong>Altura:</strong> ${data.height / 10} m</p>
+            <p><strong>Peso:</strong> ${data.weight / 10} kg</p>
+            <p><strong>Tipo:</strong> ${data.types.map(type => type.type.name).join(', ')}</p>
+            <p><strong>Habilidades:</strong> ${data.abilities.map(ability => ability.ability.name).join(', ')}</p>
+            <!-- Sprites de frente y detrás -->
+            <div class="sprites-section">
+            <h3>Sprites</h3>
+            <img src="${data.sprites.front_default}" alt="${data.name} Front"/>
+            <img src="${data.sprites.back_default}" alt="${data.name} Back" />
+        </div>
              
         </div>
     `;
-
+    // appeends para agregar las classes 
     pokemonGrid.innerHTML = pokemonHTML;
 }
 
