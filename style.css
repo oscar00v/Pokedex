@@ -13,7 +13,7 @@ body{
     align-items: center;
     place-content: center;
     /* distancia entre la barra y el centro de la pantalla  */
-    min-height: 20vh;
+    
 
     
     
@@ -71,6 +71,7 @@ button:hover {
 }
 
 .pokemon-card {
+    margin: 10px;
     border: 0.125 solid #ccc;
     border-radius: 2.4rem;
     padding: 1.25rem;
@@ -122,7 +123,125 @@ font-size: 2rem;
 .sprite-column img {
   width: 25rem; /* Ajusta el tamaño de los sprites aquí */
   height: auto;
+
 }
+#pokemon-grid2{
+  /* background-color: #ff6700; */
+  display: grid;
+  grid-template-columns: repeat(5, minmax(150px, 1fr));
+  gap: 100px;
+  margin: 20px; 
+}
+.minipokemon-image img {
+  width: 100px;
+  height: 100px;
+}
+ 
+/* #minipokemon-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(150px, 1fr));
+  gap: 20px;
+  margin: 20px; 
+}  */
+
+ .minipokemon-card {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  padding: 10px;
+  transition: transform 0.3s ease;
+}
+ .minipokemon-card:hover {
+  transform: scale(1.05);
+}
+.minipokemon-Name h2 { 
+  font-size: 1.5em;
+  color: #666;
+}
+
+.minipokemon-Name h3 {
+  font-size: 1.2em;
+  margin: 5px 0;
+  color: #333;
+}
+
+
+.type-grass {
+  background-color: #78C850;
+}
+
+.type-fire {
+  background-color: #F08030;
+}
+
+.type-water {
+  background-color: #6890F0;
+}
+
+.type-poison{
+  background-color: rgb(100, 1, 100);
+  color: #fff;
+}
+
+.type-flying{
+  background-color: rgb(88, 208, 255);
+}
+
+.type-bug{
+  background-color: green;
+  color: #fff;
+}
+
+.type-normal{
+  background-color: grey;
+  color: #fff;
+}
+
+.type-electric{
+  background-color: yellow;
+  
+}
+
+.type-ground{
+  background-color: brown;
+  color: #fff;
+}
+
+.type-fairy{
+  background-color: pink;
+  
+}
+
+.type-fighting{
+  background-color: burlywood;
+  
+}
+
+.type-psychic{
+  background-color: palevioletred;
+  color: #fff;
+}
+
+.type-rock{
+  background-color: rgb(58, 58, 58);
+  color: #fff;
+}
+.type-ice{
+  background-color: blue;
+  color: #fff;
+}
+
+.type-ghost{
+  background-color: rgb(19, 4, 19);
+  color: #fff;
+}
+
+.type-dragon{
+  background-color: rgb(252, 252, 153);
+  
+}
+
 
 /* .pokemon-sprites{
 background-color: #ff6700;

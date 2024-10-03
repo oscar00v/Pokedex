@@ -3,11 +3,11 @@ console.log("api");
 // const URL_BASE = 'https://storage.googleapis.com/campus-cvs/00000000000-images-lectures/pokemons.json'//todo esta por algun motivo no jala
 const URL_BASE = 'https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0'
 // const URL_CODE = 'https://cors-anywhere.herokuapp.com/';  // Proxy CORS gratuito
-const detailPageURL ='/us/pokedex/'//!la liga que se va a utilizar para las paginas 
+
 
 const form = document.querySelector('form');
 const inputText = document.querySelector('input[type="text"]');
-
+//!la primera api
 async function getPokemon(URL) {
     const response = await fetch(URL);// {mode: 'no-cors'});
     console.log("La respuesta:", response);
@@ -30,18 +30,47 @@ async function getPokemon(URL) {
  }
 
  function renderPokemonData(data, searchValue) {
+     // Verificar si el valor ingresado es un número
+    const isNumber = !isNaN(searchValue);
+    
 
-    const pokemon = data.results.find(pokemonItem  => pokemonItem .name.toLowerCase() === searchValue.toLowerCase());
-    if (!pokemon) {
-        console.log("Pokémon no encontrado");
-        return;
-    }
 
-    // Imprime los detalles del Pokémon en consola
-    console.log(`Nombre: ${pokemon.name}`);
-    console.log(`URL de detalles: ${pokemon.url}`);
+     let pokemon;
+ 
+     if (isNumber) {
+         // Buscar por número (ID)
+         pokemon = data.results.find(pokemonItem => pokemonItem.url.includes(`/${searchValue}/`));
+         console.log(pokemon);
+         
+     } else {
+         // Buscar por nombre
+         pokemon = data.results.find(pokemonItem => pokemonItem.name.toLowerCase() === searchValue.toLowerCase());
+         console.log(pokemon);
+     }
+ 
+     if (!pokemon) {
+         console.log("Pokémon no encontrado");
+         return;
+     }
+ 
+     // Imprime los detalles del Pokémon en consola
+     console.log(`Nombre: ${pokemon.name}`);
+     console.log(`URL de detalles: ${pokemon.url}`);
+ 
+     return pokemon.url;
 
-    return pokemon.url;
+
+    // const pokemon = data.results.find(pokemonItem  => pokemonItem .name.toLowerCase() === searchValue.toLowerCase());
+    // if (!pokemon) {
+    //     console.log("Pokémon no encontrado");
+    //     return;
+    // }
+
+    // // Imprime los detalles del Pokémon en consola
+    // console.log(`Nombre: ${pokemon.name}`);
+    // console.log(`URL de detalles: ${pokemon.url}`);
+
+    // return pokemon.url;
 }
 
 
@@ -102,6 +131,36 @@ async function submitHandler(e) {
 
 }
 
+async function renderAllPokemon() {
+     const URL_BASE = 'https://pokeapi.co/api/v2/pokemon?limit=151&offset=0'; // Cambié para cargar los primeros 151 Pokémon.
+
+    const allpokemonData = await getPokemon(URL_BASE);
+
+    const pokemonGrid = document.getElementById('pokemon-grid2');
+    pokemonGrid.innerHTML = '';  // Limpia el grid antes de renderizar
+
+    // Iterar sobre los resultados y renderizar cada Pokémon
+    for (const pokemonItem of allpokemonData.results) {
+        const pokemonDetails = await getPokemonDetails(pokemonItem.url);
+        const pokemonHTML = `
+            <div class="minipokemon-card" id="pokemon-${pokemonDetails.id}">
+                <div class="minipokemon-Name">
+                    <h2>#${String(pokemonDetails.id).padStart(3, '0')}</h2>
+                    <h3>${pokemonDetails.name.charAt(0).toUpperCase() + pokemonDetails.name.slice(1)}</h3>
+                </div>
+                <div class="minipokemon-image">
+                    <img src="${pokemonDetails.sprites.other['official-artwork'].front_default}" alt="${pokemonDetails.name}">
+                </div>
+                <div class="minipokemon-type">
+                    ${pokemonDetails.types.map(type => `<span class="type-${type.type.name}">${type.type.name}</span>`).join(' ')}
+                </div>
+            </div>
+        `;
+        pokemonGrid.innerHTML += pokemonHTML; // Añade las tarjetas al grid
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => renderAllPokemon());
 
 //  getPokemon(URL_BASE);
 
