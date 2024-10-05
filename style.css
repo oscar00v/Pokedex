@@ -70,12 +70,23 @@ button:hover {
   background-color: #ff8533;
 }
 
+.pokemon-grid{
+  
+  display: flex;
+  
+  justify-content: center;
+  align-items: center;
+  
+}
+
 .pokemon-card {
+  
     margin: 10px;
     border: 0.125 solid #ccc;
     border-radius: 2.4rem;
     padding: 1.25rem;
     width: 55rem;
+    
     text-align: center;
     background-color: #f9f9f9;
     box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2);

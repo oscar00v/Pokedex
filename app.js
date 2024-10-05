@@ -92,7 +92,9 @@ async function getPokemon(URL) {
 
                 <p><strong>Altura:</strong> ${data.height / 10} m</p>
                 <p><strong>Peso:</strong> ${data.weight / 10} kg</p>
-                <p><strong>Tipo:</strong> ${data.types.map(type => type.type.name).join(', ')}</p>
+                
+                    <p><strong>Tipo:</strong> ${data.types.map(type => type.type.name).join(', ')}</p>
+                
                 <p><strong>Habilidades:</strong> ${data.abilities.map(ability => ability.ability.name).join(', ')}</p></div>
             </div>
         <div class="pokemon-sprites">
@@ -125,6 +127,16 @@ async function submitHandler(e) {
     const pokemonData = await getPokemon(URL_BASE);
     const renderpokemon = await renderPokemonData(pokemonData, inputValue);
 
+    if (!renderpokemon) {
+        console.log("No se pudo encontrar el Pokémon.");
+        return;
+    }
+
+    // Ocultar todas las demás tarjetas excepto la buscada
+    const allCards = document.querySelectorAll('.minipokemon-card');
+    allCards.forEach(card => {
+        card.style.display = 'none';  // Ocultar todas
+    });
        
     const PokemonCard = await getPokemonDetails(renderpokemon)
     await renderPokemonCard(PokemonCard);
