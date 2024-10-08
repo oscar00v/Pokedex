@@ -19,6 +19,12 @@ body{
     
 }
 
+.pokedex-link {
+  text-decoration: none;  /* Quitar subrayado */
+  color: white;  /* Cambia el color del texto */
+}
+
+
 form{
   /* background-color: aqua; */
   background-color: #202020;

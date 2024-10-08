@@ -4,13 +4,17 @@ console.log("api");
 const URL_BASE = 'https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0'
 // const URL_CODE = 'https://cors-anywhere.herokuapp.com/';  // Proxy CORS gratuito
 
+//? DOM
 
-const form = document.querySelector('form');
-const inputText = document.querySelector('input[type="text"]');
+const form = document.querySelector('form');//?para la api, es para el foprmulario
+const inputText = document.querySelector('input[type="text"]');//? es para el texto que se introduce 
+
+
 //!la primera api
+
 async function getPokemon(URL) {
     const response = await fetch(URL);// {mode: 'no-cors'});
-    console.log("La respuesta:", response);
+    console.log("La respuesta: ", response);
  
     if(!response.ok){
         renderError(response.status);
@@ -31,21 +35,21 @@ async function getPokemon(URL) {
 
  function renderPokemonData(data, searchValue) {
      // Verificar si el valor ingresado es un número
-    const isNumber = !isNaN(searchValue);
+    const isNumber = !isNaN(searchValue);//?checa si es un numero el dato que le paso
     
 
 
      let pokemon;
  
      if (isNumber) {
-         // Buscar por número (ID)
+         //* Buscar por número (ID)
          pokemon = data.results.find(pokemonItem => pokemonItem.url.includes(`/${searchValue}/`));
-         console.log(pokemon);
+         console.log("Pokemon:",pokemon);
          
      } else {
-         // Buscar por nombre
+         //* Buscar por nombre
          pokemon = data.results.find(pokemonItem => pokemonItem.name.toLowerCase() === searchValue.toLowerCase());
-         console.log(pokemon);
+         console.log("Pokemon:",pokemon);
      }
  
      if (!pokemon) {
@@ -78,14 +82,15 @@ async function getPokemon(URL) {
  function renderPokemonCard(data){
     const pokemonGrid = document.getElementById('pokemon-grid');
     let className = "";//switch case grass = verde 
-    const pokemonHTML = `
+    //!"B" + "ulbasaur" // Devuelve "Bulbasaur"
+    const pokemonHTML = `    
         <div class="pokemon-card">
             <div class = "pokemon-Name">
-                <h1>${data.name.charAt(0).toUpperCase() + data.name.slice(1)} N.º ${data.id}</h1></div>
-
-            <div class = "pokemon-image">
+                <h1>${data.name.charAt(0).toUpperCase() + data.name.slice(1)} N. º ${data.id}
+                </h1>
+            </div> 
             
-            </div>
+            
             <div class = "pokemon-details">
                 <div class = "pokemon-columns"> <img src="${data.sprites.other['official-artwork'].front_default}" alt="${data.name}"></div>
                 <div class = "pokemon-columns">
@@ -132,11 +137,11 @@ async function submitHandler(e) {
         return;
     }
 
-    // Ocultar todas las demás tarjetas excepto la buscada
-    const allCards = document.querySelectorAll('.minipokemon-card');
-    allCards.forEach(card => {
-        card.style.display = 'none';  // Ocultar todas
-    });
+    // // Ocultar todas las demás tarjetas excepto la buscada
+    // const allCards = document.querySelectorAll('.minipokemon-card');
+    // allCards.forEach(card => {
+    //     card.style.display = 'none';  // Ocultar todas
+    // });
        
     const PokemonCard = await getPokemonDetails(renderpokemon)
     await renderPokemonCard(PokemonCard);
